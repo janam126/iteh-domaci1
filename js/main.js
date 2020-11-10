@@ -26,6 +26,38 @@ $('#btn-izbrisi').click( function(){
           alert('Teniser nije obrisan');
       }
   });
-  //$('input[type=radio]:checed').closest.remove();
+});
+
+  $('#btnDodaj').submit(function() {
+    $('#myModal').modal('toggle');
+    return false;
+  });
+
+  $('#dodajForm').submit(function() {
+    event.preventDefault();
+    console.log("Ovde");
+    const $form = $(this);
+    const $inputs = $form.find('input, select, button');
+    const serialzedData = $form.serialize();
+    console.log(serialzedData);
+    $inputs.prop('disabled', true);
+
+    request = $.ajax ({
+      url: 'handler/add.php',
+      type: 'post',
+      data: serialzedData
+    });
+
+    request.done(function(response, textStatus, jqXHR) {
+      if(response === 'Success') {
+        alert('Teniser je dodat');
+        location.reload(true);
+      }
+      else console.log('Teniser nije dodat' + response);
+      console.log(response);
+    });
+    request.fail(function(jqXHR, textStatus, errorThrown) {
+      console.error('The following error occured: ' + textStatus, errorThrown);
+    });
   });
 

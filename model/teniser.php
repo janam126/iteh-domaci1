@@ -26,6 +26,12 @@ class Teniser {
         return $conn->query($q);
     }
 
+    public static function add($imePrezime, $datumRodjenja, $drzavaPorekla, $brojTitula, mysqli $conn) {
+        $q = "INSERT INTO teniser(imePrezime, datumRodjenja, drzavaPorekla, brojTitula) values('$imePrezime','$datumRodjenja',
+                '$drzavaPorekla', '$brojTitula')";
+        return $conn->query($q);
+    }
+
 }
 
 ?>
