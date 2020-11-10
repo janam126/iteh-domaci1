@@ -86,8 +86,7 @@ else {
         </table>
             <div class = "row">
                 <div class = "nesto">
-                    <button id = "btn-izmena">Izmena</button>
-                   
+                    <button id = "btnIzmeni" data-toggle = "modal" data-target = "#izmeniModal">Izmena</button>
                     <button id = "btn-izbrisi">Izbrisi</button>
                 </div>
             </div>
@@ -136,6 +135,58 @@ else {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" style="color: white; background-color: blue; border: 1px solid white" data-dismiss="modal">Zatvori</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="izmeniModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal sadrzaj-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="container teniser-form">
+                    <form action="#" method="post" id="izmeniForm">
+                        <h3 style="color: black">Izmena tenisera</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input id="teniserid" type="text" name="teniserID" class="form-control"
+                                           placeholder="ID tenisera *" value="" readonly/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="imePr" type="text" name="imePrezime" class="form-control"
+                                           placeholder="Ime i prezime *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="datRodj" type="date" name="datumRodjenja" class="form-control"
+                                           placeholder="Datum rodjenja *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="drzava" type="text" name="drzavaPorekla" class="form-control"
+                                           placeholder="Drzava porekla *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input id="brTitula" type="number" name="brojTitula" class="form-control"
+                                           placeholder="Broj titula *" value=""/>
+                                </div>
+                                <div class="form-group">
+                                    <button id="btnIzmeni" type="submit" class="btn btn-success btn-block"
+                                            style="color: white; background-color: blue; border: 1px solid white"><i
+                                                class="glyphicon glyphicon-pencil"></i> Izmeni tenisera
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
             </div>
         </div>
     </div>

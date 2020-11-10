@@ -26,11 +26,32 @@ class Teniser {
         return $conn->query($q);
     }
 
-    public static function add($imePrezime, $datumRodjenja, $drzavaPorekla, $brojTitula, mysqli $conn) {
+    public static function add($imePrezime, $datumRodjenja, $drzavaPorekla, $brojTitula, mysqli $conn) { 
         $q = "INSERT INTO teniser(imePrezime, datumRodjenja, drzavaPorekla, brojTitula) values('$imePrezime','$datumRodjenja',
                 '$drzavaPorekla', '$brojTitula')";
         return $conn->query($q);
     }
+
+    public static function getById($teniserID, mysqli $conn)
+    {
+        $q = "SELECT * FROM teniser WHERE teniserID=$teniserID";
+        $myArray = array();
+        if ($result = $conn->query($q)) {
+
+            while ($row = $result->fetch_array(1)) {
+                $myArray[] = $row;
+            }
+        }
+        return $myArray;
+    }
+
+    public static function update($teniserID, $imePrezime, $datumRodjenja, $drzavaPorekla, $brojTitula, mysqli $conn)
+    {
+        $q = "UPDATE teniser set imePrezime='$imePrezime', datumRodjenja='$datumRodjenja', 
+            drzavaPorekla='$drzavaPorekla', brojTitula='$brojTitula' where teniserID=$teniserID";
+        return $conn->query($q);
+    }
+
 
 }
 
