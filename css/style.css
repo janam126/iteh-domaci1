@@ -1,0 +1,75 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image: url("../image/pozadinalogin.jpg");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+h1 {
+    color: whitesmoke;
+    text-align: center;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    opacity: 80%;
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.562);
+    display: block;
+    margin-top: 0em;
+    border: 5px solid whitesmoke;
+    border-radius: 28px;
+}
+
+input[type=text], input[type=password] {
+    width: 45%;
+    padding: 12px 20px;
+    margin: 0 auto;
+    display: flex;
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 0 auto;
+    display: grid;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+button:hover {
+    opacity: 0.8;
+    border: gray;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 12px;
+    padding-top: 24px
+}
+
+.container {
+    padding: 16px;
+}
+
+.main-div {
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px
+}

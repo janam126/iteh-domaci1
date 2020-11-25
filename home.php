@@ -27,38 +27,38 @@ else {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="image/loptica.jpg"/>
+        <link rel = "stylesheet" href = "css/home.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Teniseri</title>
     </head>
     <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
-        <div>
-            <h1>Dobrodosli na sajt</h1>
-        </div>
+    <div class="jumbotron text-center" style = "background-color: rgba(255, 182, 193, 0);">
+      <div class="container">
+        <h1 style = "color: whitesmoke">Dobrodošli na sajt</h1>
+        <p>Saznajte više o svetski poznatim teniserima</p>
+      </div>
+    </div>
         <div class = "row">
-            <div class="nesto" style="width: 35%; float: left; background-color:blue; padding-right:20px;">
-                <h2>Pregled liste svih tenisera</h2>
-                <button id = "btn" onclick = "prikazi()">Pregledaj</button>
+            <div class="col-md-6" style="width: 50%; float: left; text-align: center; background-color:rgba(0, 0, 0, 0.4); padding-right:20px;">
+                <h2 style = "color: whitesmoke">Pregled liste svih tenisera</h2>
+                <button id = "btn" class = "btn btn-normal" onclick = "prikazi()">PRIKAŽI</button>
             </div>
-            <div class="nesto" style="width: 30%; float: left; background-color:blue; padding-right:20px;">
-                <h2>Dodaj tenisera</h2>
-                <button id = "btn-dodaj" data-toggle = "modal" data-target = "#myModal">Dodaj</button>
-            </div>
-            <div class="nesto" style="width: 30%; float: left; background-color:blue; padding-right:20px;">
-                <h2>Pretrazi tenisere</h2>
-                <input type = "text" id = "myInput" placeholder = "Pretrazi tenisere" onkeyup = "pretrazi()">
+            <div class="col-md-6" style="width: 50%; float: left; text-align: center; background-color:rgba(0, 0, 0, 0.4); padding-right:20px;">
+                <h2 style = "color: whitesmoke">Pretraži tenisere</h2>
+                <input type = "text" id = "myInput" class = "btn" placeholder = "Pretrazi tenisere" onkeyup = "pretrazi()">
             </div>
         </div>
         <div id = "pregled">
-        <table id = "tabela">
+        <table id = "tabela" class = "table table-hover table-bordered sortable">
             <thead>
                 <tr>
                     <th scope = "col">#</th>
                     <th scope = "col">Ime i prezime</th>
-                    <th scope = "col">Datum rodjenja</th>
-                    <th scope = "col">Drzava porekla</th>
+                    <th scope = "col">Datum rođenja</th>
+                    <th scope = "col">Država porekla</th>
                     <th scope = "col">Broj titula</th>
+                    <th scope = "col">Izaberi tenisera</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,13 +84,18 @@ else {
                 ?>
             </tbody>
         </table>
-            <div class = "row">
-                <div class = "nesto">
-                    <button id = "btnIzmeni" data-toggle = "modal" data-target = "#izmeniModal">Izmena</button>
-                    <button id = "btn-izbrisi">Izbrisi</button>
-                </div>
+        <div>
+            <div class="col-md-4" style="text-align: center">
+                <button id = "btn-dodaj" class = "btn btn-normal" data-toggle = "modal" data-target = "#myModal">DODAJ</button>
+            </div>
+            <div class="col-md-4" style="text-align: center">
+                <button id = "btnIzmeni" class = "btn btn-normal" data-toggle = "modal" data-target = "#izmeniModal">IZMENI</button>
+            </div>
+            <div class="col-md-4" style="text-align: center">
+                <button id = "btn-izbrisi" class = "btn btn-normal">IZBRIŠI</button>
             </div>
         </div>
+    </div>
 
     <div class="modal fade" id="myModal" role="dialog" >
     <div class="modal-dialog">
@@ -101,9 +106,10 @@ else {
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="container teniser-form">
-                    <form action="#" method="post" id="dodajForm">
+                <div class="container tim-form">
+                    <form action="#" method="post" id="dodajForm" >
                         <h3 style="color: black">Dodavanje tenisera</h3>
+                        <br>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -191,7 +197,8 @@ else {
         </div>
     </div>
 </div>
-        
+
+     <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <script src = "js/main.js"></script>
 

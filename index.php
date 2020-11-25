@@ -29,21 +29,24 @@ if(isset($_POST['username'])&& isset($_POST['password'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet--->
-    <link rel="icon" href="image/loptica.jpg"/>
+    <link rel="icon" href="image/loptica.png"/>
+    <link rel = "stylesheet" href = "css/style.css">
     <title>Teniseri</title>
 </head>
 <body>
     <div class="login">
         <div class="main-div">
         <form method="POST" action="#">
-            <h1>TENISERI</h1>
+            <h1>LOGIN FORMA</h1>
             <div class="imgcontainer">
-                <img src="image/loptica.jpg" alt="" class="slikaForme">
+                <img src="image/loptica.png" alt="" class="slikaForme">
             </div>
             <div class = "container">
-                <input type="username" placeholder="Username" name="username" class="form-control" required>
+                <input type="text" placeholder="Username" name="username" class="form-control" required>
+                <br>
                 <input type="password" placeholder="Password" name="password" class="form-control" required>
-                <button type="sumbit" class="btn" name="Prijavi se!"></button>
+                <br>
+                <button type="sumbit">PRIJAVI SE</button>
             </div>
         </form>
     </div>
