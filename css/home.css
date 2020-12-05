@@ -28,7 +28,7 @@ button:hover {
     margin-top: 10%;
     margin-bottom: 5%;
     width: 90%;
-    border: 5px solid orange;
+    border: 5px solid black;
 }
 .teniser-form .form-control{
     border-radius:1rem;
@@ -38,7 +38,6 @@ button:hover {
 }
 #dodajForm, #izmeniForm{
 width: 550px;
-
 }
 .teniser-form img{
     border-radius: 6rem;
@@ -68,19 +67,11 @@ width: 550px;
     color: #fff;
     cursor: pointer;
 }
-.btnSubmit
-{
-    width: 50%;
-    border-radius: 1rem;
-    padding: 1.5%;
-    color: #fff;
-    background-color: #0062cc;
-    border: none;
-    cursor: pointer;
-}
 
 div.modal-content {
-    background-image: url("../image/pozadinalogin.jpg");
+    background-image: url("../image/forma2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .panel-info>.panel-heading {

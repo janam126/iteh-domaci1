@@ -5,7 +5,10 @@ require "model/teniser.php";
 
 session_start();
 
-//nesto oko logouta
+if(empty($_SESSION['loggeduser']) || $_SESSION['loggeduser'] == '') {
+    header("Location:index.php");
+    die();
+}
 
 $result = Teniser::getAll($conn);
 
@@ -85,30 +88,35 @@ else {
             </tbody>
         </table>
         <div>
-            <div class="col-md-4" style="text-align: center">
+            <div class="col-md-2" style="text-align: center; width: 25%; float: left;">
                 <button id = "btn-dodaj" class = "btn btn-normal" data-toggle = "modal" data-target = "#myModal">DODAJ</button>
             </div>
-            <div class="col-md-4" style="text-align: center">
+            <div class="col-md-2" style="text-align: center; width: 25%; float: left;">
                 <button id = "btnIzmeni" class = "btn btn-normal" data-toggle = "modal" data-target = "#izmeniModal">IZMENI</button>
             </div>
-            <div class="col-md-4" style="text-align: center">
+            <div class="col-md-2" style="text-align: center; width: 25%; float: left;">
                 <button id = "btn-izbrisi" class = "btn btn-normal">IZBRIŠI</button>
+            </div>
+            <div class="col-md-2" style="text-align: center; width: 25%; float: left;>">
+                <button id = "btn-izmeni" class = "btn btn-normal" onclick = "sortTable()">SORTIRAJ PO NAZIVU</button>
             </div>
         </div>
     </div>
 </div></div></div></div></div>
+<br>
+<a href="logout.php" class = "label label-primary" style = "font-size:16px; display:in-line; float: right"> Logout </a>
     <div class="modal fade" id="myModal" role="dialog" >
     <div class="modal-dialog">
 
         <!--Sadrzaj modala-->
-        <div class="modal-content" style="border: 3px solid orange;">
+        <div class="modal-content" style="border: 3px solid black;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="container teniser-form">
                     <form action="#" method="post" id="dodajForm">
-                        <h3 style="color: black">Dodavanje tenisera</h3>
+                        <h3 style="color: whitesmoke">Dodavanje tenisera</h3>
                         <div class="row" style="display:grid">
                             <div class="col-md-6 nesto">
                             <div class="form-group">
@@ -128,7 +136,7 @@ else {
                                            placeholder="Broj titula *" value=""/>
                                 </div>
                                 <div class="form-group">
-                                    <button id="btnDodaj" type="submit" class="btn btn-success btn-block"
+                                    <button id="btnDodaj" type="submit" class="btn  btn-block"
                                             style="background-color: blue; border: 1px solid black;"><i
                                                 class="glyphicon glyphicon-plus"></i> Dodaj tenisera
                                     </button>
@@ -141,7 +149,7 @@ else {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" style="color: white; background-color: orange; border: 1px solid white" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-default" style="color: white; background-color: green; border: 1px solid white" data-dismiss="modal">Zatvori</button>
             </div>
         </div>
 
@@ -151,63 +159,14 @@ else {
 
 <div class="modal fade" id="izmeniModal" role="dialog">
     <div class="modal-dialog">
-
-        <!-- Modal sadrzaj
-        <div class="modal-content">
+        <div class="modal-content" style="border: 3px solid black;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="container teniser-form">
                     <form action="#" method="post" id="izmeniForm">
-                        <h3 style="color: black">Izmjena sira</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                            <div class="form-group">
-                                    <input id="teniserid" type="text" name="teniserID" class="form-control"
-                                           placeholder="ID tenisera *" value="" readonly/>
-                                </div>
-                                <div class="form-group">
-                                    <input id="imePr" type="text" name="imePrezime" class="form-control"
-                                           placeholder="Ime i prezime *" value=""/>
-                                </div>
-                                <div class="form-group">
-                                    <input id="datRodj" type="date" name="datumRodjenja" class="form-control"
-                                           placeholder="Datum rodjenja *" value=""/>
-                                </div>
-                                <div class="form-group">
-                                    <input id="drzava" type="text" name="drzavaPorekla" class="form-control"
-                                           placeholder="Drzava porekla *" value=""/>
-                                </div>
-                                <div class="form-group">
-                                    <input id="brTitula" type="number" name="brojTitula" class="form-control"
-                                           placeholder="Broj titula *" value=""/>
-                                </div>
-                                <div class="form-group">
-                                    <button id="btnIzmeni" type="submit" class="btn btn-success btn-block"
-                                            style="color: white; background-color: blue; border: 1px solid white"><i
-                                                class="glyphicon glyphicon-pencil"></i> Izmeni tenisera
-                                    </button>
-                                </div>
-
-                            </div>
-                            
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
-            </div>
-        </div>-->
-        <div class="modal-content" style="border: 3px solid orange;">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="container teniser-form">
-                    <form action="#" method="post" id="izmeniForm">
-                        <h3 style="color: black">Izmena tenisera</h3>
+                        <h3 style="color: whitesmoke">Izmena tenisera</h3>
                         <div class="row" style="display:grid">
                             <div class="col-md-6 nesto">
                             <div class="form-group">
@@ -231,8 +190,8 @@ else {
                                            placeholder="Broj titula *" value=""/>
                                 </div>
                                 <div class="form-group">
-                                    <button id="btnIzmeni" type="submit" class="btn btn-success btn-block"
-                                            style="color: white; background-color: blue; border: 1px solid white"><i
+                                    <button id="btnIzmeni1" type="submit" class="btn btn-block"
+                                            style="background-color: blue; color: white; border: 1px solid white"><i
                                                 class="glyphicon glyphicon-pencil"></i> Izmeni tenisera
                                     </button>
                                 </div>
@@ -244,17 +203,12 @@ else {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" style="color: white; background-color: orange; border: 1px solid white" data-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-default" style="color: white; background-color: green; border: 1px solid white" data-dismiss="modal">Zatvori</button>
             </div>
         </div>
-
-
-
     </div>
 </div>
-
-
-     <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>   
+ 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <script src = "js/main.js"></script>
 
@@ -288,8 +242,30 @@ else {
             }
         }
 
-    </script>
-      
+        function sortTable() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("tabela");
+            switching = true;
+ 
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[1];
+                    y = rows[i + 1].getElementsByTagName("TD")[1];
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+    </script>    
     </body>
     </html>
 
